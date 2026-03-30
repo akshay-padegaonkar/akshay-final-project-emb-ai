@@ -16,7 +16,7 @@ texts = [
 for t in texts:
     results = emotion_detector(t)
     dominant = results.get("dominant_emotion","")
-    print(t, "->", dominant\n)
+    print(f"{t} -> {dominant}\n")
 
 #result1 = emotion_detector(text1)
 #dominant1 = result1.get("dominant_emotion", "")
