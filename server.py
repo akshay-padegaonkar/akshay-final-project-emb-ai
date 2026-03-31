@@ -1,3 +1,4 @@
+"""Flask server for Emotion Detection API."""
 from flask import Flask, request, jsonify
 from EmotionDetection import emotion_detector
 
@@ -8,6 +9,7 @@ def main():
     return "Emotion Detection API running"
 
 @app.route("/emotionDetector", methods=["POST"])
+"""Handle emotion detection requests."""
 def detect_emotion():
     data = request.get_json()
     text = data.get("text","")
