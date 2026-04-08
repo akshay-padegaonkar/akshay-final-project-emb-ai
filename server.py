@@ -10,17 +10,20 @@ app = Flask("Emotion Detector")
 
 @app.route("/emotionDetector")
 def emotion_detection():
-    """Handle emotion detection requests."""
-    
-    text_to_analyze = request.args.get('textToAnalyze')
+    """Handle emotion detection requests and return formatted response."""
+
+    text_to_analyze = request.args.get("textToAnalyze")
+
+    # Validate input before processing
+    if not text_to_analyze:
+        return "Invalid text! Please try again!"
 
     response = emotion_detector(text_to_analyze)
 
-    # Handle invalid input
+    # Handle invalid response
     if response.get("dominant_emotion") is None:
         return "Invalid text! Please try again!"
 
-    # Format response EXACTLY as expected
     return (
         "For the given statement, the system response is "
         f"'anger': {response['anger']}, "
